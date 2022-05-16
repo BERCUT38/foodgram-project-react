@@ -1,18 +1,17 @@
+from django.contrib.auth import get_user_model
+from django.db.models import F
+from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 from rest_framework.serializers import ValidationError
-from .models import Recipes, Ringredients, Favorite, ShoppingList
 
 from apps.ingredients.models import Ingredient
 from apps.tags.models import Tags
 from apps.tags.serializers import TagsSerializer
 from apps.user.serializers import CustomUserSerializer
 
-from drf_extra_fields.fields import Base64ImageField
-from django.db.models import F
-from django.contrib.auth import get_user_model
+from .models import Favorite, Recipes, Ringredients, ShoppingList
 
 User = get_user_model()
-
 
 class RecipeIngredientsSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField(source='ingredient.id')
