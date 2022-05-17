@@ -184,4 +184,3 @@ class ShoppingListSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         context = {'request': request}
         return RecipeSerializer(instance.recipe, context=context).data
-

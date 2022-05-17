@@ -26,4 +26,3 @@ class FavoriteAdmin(admin.ModelAdmin):
 @admin.register(ShoppingList)
 class ShoppingListAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'recipe']
-
