@@ -106,7 +106,7 @@ class AddRecipeSerializer(serializers.ModelSerializer):
             amount = ingredient['amount']
             if Ringredients.objects.filter(
                 recipe=recipe, ingredient=ingredient_id
-               ).exists():
+                ).exists():
                 amount += F('amount')
             Ringredients.objects.update_or_create(
                 recipe=recipe, ingredient=ingredient_id,

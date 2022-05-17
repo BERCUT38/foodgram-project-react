@@ -142,13 +142,13 @@ DJOSER = {
            'user_create': 'apps.user.serializers.UserRegistrationSerializer',
            'user': 'apps.user.serializers.CustomUserSerializer',
            'current_user': 'apps.user.serializers.CustomUserSerializer',
-       },
+           },
        'USER_ID_FIELD': 'id',
        'HIDE_USERS': False,
        'PERMISSIONS': {
            'user': ['rest_framework.permissions.IsAuthenticated'],
            'user_list': ['rest_framework.permissions.AllowAny']
-       },
-   }
+           },
+         }
 
 AUTH_USER_MODEL = 'user.User'
