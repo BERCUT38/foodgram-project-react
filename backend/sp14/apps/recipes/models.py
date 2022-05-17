@@ -15,8 +15,10 @@ class Recipes(models.Model):
                             verbose_name='Описание')
     tags = models.ManyToManyField(Tags, through='Rtags')
     ingredients = models.ManyToManyField(Ingredient, through='Ringredients')
-    cooking_time = models.PositiveIntegerField(validators=[MinValueValidator(1)],
-			                       verbose_name='Время готовки')
+    cooking_time = models.PositiveIntegerField(
+    					validators=[MinValueValidator(1)],
+					verbose_name='Время готовки'
+					)
     image = models.ImageField(upload_to='recipes/', 
     			      blank=False, null=False,
                               verbose_name='Фото рецепта')
@@ -89,5 +91,4 @@ class ShoppingList(models.Model):
         ordering = ('-id',)
         verbose_name = 'Список покупок'
         verbose_name_plural = 'Список покупок'
-
 
