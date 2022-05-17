@@ -1,11 +1,10 @@
+from apps.pagination import CustomPageNumberPaginator
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import permissions, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-
-from apps.pagination import CustomPageNumberPaginator
 
 from .filters import RecipeFilter
 from .models import Favorite, Recipes, Ringredients, ShoppingList

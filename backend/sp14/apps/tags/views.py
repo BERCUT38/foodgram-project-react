@@ -1,4 +1,4 @@
-from rest_framework import viewsets, permissions, mixins
+from rest_framework import mixins, permissions, viewsets
 
 from .models import Tags
 from .serializers import TagsSerializer
