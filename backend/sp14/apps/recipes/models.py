@@ -16,11 +16,9 @@ class Recipes(models.Model):
     tags = models.ManyToManyField(Tags, through='Rtags')
     ingredients = models.ManyToManyField(Ingredient, through='Ringredients')
     cooking_time = models.PositiveIntegerField(
-    					validators=[MinValueValidator(1)],
-					verbose_name='Время готовки'
-					)
-    image = models.ImageField(upload_to='recipes/', 
-    			      blank=False, null=False,
+                    validators=[MinValueValidator(1)],
+                    verbose_name='Время готовки')
+    image = models.ImageField(upload_to='recipes/', blank=False, null=False,
                               verbose_name='Фото рецепта')
 
     class Meta:
