@@ -1,9 +1,8 @@
-from django.core.validators import MinValueValidator
-from django.db import models
-
 from apps.ingredients.models import Ingredient
 from apps.tags.models import Tags
 from apps.user.models import User
+from django.core.validators import MinValueValidator
+from django.db import models
 
 
 class Recipes(models.Model):
@@ -90,3 +89,4 @@ class ShoppingList(models.Model):
         ordering = ('-id',)
         verbose_name = 'Список покупок'
         verbose_name_plural = 'Список покупок'
+

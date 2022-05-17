@@ -22,6 +22,8 @@ class RingredientsAdmin(admin.ModelAdmin):
 class FavoriteAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'recipe']
 
+
 @admin.register(ShoppingList)
 class ShoppingListAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'recipe']
+
