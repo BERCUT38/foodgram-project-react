@@ -1,9 +1,8 @@
-from django.urls import include, path
-
-from apps.tags.urls import tags_router
 from apps.ingredients.urls import ingredients_router
-from apps.user.urls import urlpatterns
 from apps.recipes.urls import recipes_router
+from apps.tags.urls import tags_router
+from apps.user.urls import urlpatterns
+from django.urls import include, path
 
 urlpatterns = [
     path('ingredients/', include(ingredients_router.urls)),

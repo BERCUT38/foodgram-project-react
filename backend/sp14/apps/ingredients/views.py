@@ -1,9 +1,9 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets, permissions, mixins
+from rest_framework import mixins, permissions, viewsets
 
+from .filters import IngredientsFilter
 from .models import Ingredient
 from .serializers import IngredientSerializer
-from .filters import IngredientsFilter
 
 
 class RetriveAndListViewSet(
