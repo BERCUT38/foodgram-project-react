@@ -90,3 +90,4 @@ class ShoppingList(models.Model):
         verbose_name = 'Список покупок'
         verbose_name_plural = 'Список покупок'
 
+
