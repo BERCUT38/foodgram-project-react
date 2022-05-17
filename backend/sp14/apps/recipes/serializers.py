@@ -1,17 +1,17 @@
+from apps.ingredients.models import Ingredient
+from apps.tags.models import Tags
+from apps.tags.serializers import TagsSerializer
+from apps.user.serializers import CustomUserSerializer
 from django.contrib.auth import get_user_model
 from django.db.models import F
 from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 from rest_framework.serializers import ValidationError
 
-from apps.ingredients.models import Ingredient
-from apps.tags.models import Tags
-from apps.tags.serializers import TagsSerializer
-from apps.user.serializers import CustomUserSerializer
-
 from .models import Favorite, Recipes, Ringredients, ShoppingList
 
 User = get_user_model()
+
 
 class RecipeIngredientsSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField(source='ingredient.id')
@@ -138,10 +138,9 @@ class AddRecipeSerializer(serializers.ModelSerializer):
         return recipe
 
     def to_representation(self, recipe):
-        data = FullRecipesSerializer(recipe, context={
+        return FullRecipesSerializer(recipe, context={
             'request': self.context.get('request')
             }).data
-        return data
 
 
 class FavouriteSerializer(serializers.ModelSerializer):
@@ -185,3 +184,4 @@ class ShoppingListSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         context = {'request': request}
         return RecipeSerializer(instance.recipe, context=context).data
+
