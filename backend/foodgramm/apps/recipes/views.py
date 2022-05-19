@@ -85,7 +85,7 @@ class RecipesViewSet(viewsets.ModelViewSet):
     def download_shopping_cart(self, request):
         user = request.user.username
         user_shopping_list = request.user.shlist.all()
-	return get_ingredients_list(user_shopping_list, user)
+        return get_ingredients_list(user_shopping_list, user)
 
     def destroy(self, request, pk):
         recipe = Recipes.objects.get(id=pk)
