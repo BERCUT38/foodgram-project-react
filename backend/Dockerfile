@@ -6,10 +6,10 @@ COPY requirements.txt /app
 
 RUN pip3 install -r /app/requirements.txt --no-cache-dir
 
-COPY sp14/ /app
+COPY foodrgamm/ /app
 
 WORKDIR /app
 
-CMD ["gunicorn", "sp14.wsgi:application", "--bind", "0:8000"]
+CMD ["gunicorn", "foodgramm.wsgi:application", "--bind", "0:8000"]
 
  
