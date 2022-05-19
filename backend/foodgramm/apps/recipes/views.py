@@ -1,7 +1,7 @@
 import os
 
-from apps.pagination import CustomPageNumberPaginator
 from apps.ingredients.models import Ingredient
+from apps.pagination import CustomPageNumberPaginator
 
 from django.contrib.auth import get_user_model
 from django.db.models import Sum
