@@ -82,7 +82,7 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE_HOST }} # Если ваш ssh-ключ защищён фразой-паролем
         script: |
           # Выполняет pull образа с DockerHub
-          sudo docker pull bercut38/sprint14
+          sudo docker pull bercut38/sprint14:v1
           #остановка всех контейнеров
           sudo docker stop $(sudo docker ps -a -q)
-          sudo docker run --rm -d -p 5000:5000 bercut38/sprint14
+          sudo docker run --rm -d -p 5000:5000 bercut38/sprint14:v1
