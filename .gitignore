@@ -131,4 +131,4 @@ dmypy.json
 
 # .idea
 .idea
-backend/foodgramm/foodgramm/settings_dev
+settings_dev.py
