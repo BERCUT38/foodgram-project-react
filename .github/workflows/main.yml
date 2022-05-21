@@ -88,5 +88,5 @@ jobs:
           sudo docker-compose stop
           sudo docker-compose rm -f web
           sudo docker-compose rm -f frontend
-          sudo docker-compose up -d --build -p 5000:5000
+          sudo docker-compose up -d --build
 
