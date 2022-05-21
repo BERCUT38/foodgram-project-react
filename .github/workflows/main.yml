@@ -88,5 +88,4 @@ jobs:
           sudo docker-compose stop
           sudo docker-compose rm -f web
           sudo docker-compose rm -f frontend
-          cd infra/
           sudo docker-compose up -d
