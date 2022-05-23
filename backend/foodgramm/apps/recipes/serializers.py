@@ -74,7 +74,7 @@ class AddRecipeIngredientsSerializer(serializers.ModelSerializer):
     def validate_amount(self, data):
         if data <= 0:
             raise ValidationError('Хоть чуток насыпь XD')
-        return data    
+        return data
 
 
 class AddRecipeSerializer(serializers.ModelSerializer):

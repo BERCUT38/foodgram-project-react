@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import Favorite, Recipes, Ringredients, Rtags, ShoppingList
+from .models import Favorite, Recipes, ShoppingList
+
 
 class RingredientsInLine(admin.TabularInline):
     model = Recipes.ingredients.through
@@ -11,10 +12,11 @@ class RtagsInLine(admin.TabularInline):
     model = Recipes.tags.through
     extra = 1
 
+
 @admin.register(Recipes)
 class RecipesAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'author']
-    search_fields = ('name', 'id',) 
+    search_fields = ('name', 'id',)
     list_filter = ('name',)
     inlines = (RingredientsInLine, RtagsInLine)
 
@@ -22,12 +24,12 @@ class RecipesAdmin(admin.ModelAdmin):
 @admin.register(Favorite)
 class FavoriteAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'recipe']
-    search_fields = ('user', 'id',) 
-    list_filter = ('user',)    
+    search_fields = ('user', 'id',)
+    list_filter = ('user',)
 
 
 @admin.register(ShoppingList)
 class ShoppingListAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'recipe']
-    search_fields = ('user', 'id',) 
-    list_filter = ('user',)    
+    search_fields = ('user', 'id',)
+    list_filter = ('user',)
