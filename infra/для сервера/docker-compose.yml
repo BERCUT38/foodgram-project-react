@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 
 services:
   db:
@@ -9,9 +9,7 @@ services:
       - ./.env
 
   web:
-    build: 
-      context: ../backend
-      dockerfile: Dockerfile
+    image: bercut38/sprint14_back:v1
     restart: always
     volumes:
       - static_value:/app/static/
@@ -19,14 +17,13 @@ services:
     depends_on:
       - db
     env_file:
-      - ./.env 
-
+      - ./.env
   frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
+    image: bercut38/sprint14_front:v1
     volumes:
       - ../frontend/:/app/result_build/
+    depends_on:
+      - web
 
   nginx:
     image: nginx:1.21.3-alpine
@@ -46,4 +43,4 @@ volumes:
   # Новые тома 
   static_value:
   media_value:
- 
+
