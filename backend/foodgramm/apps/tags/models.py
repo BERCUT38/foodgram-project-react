@@ -2,36 +2,26 @@ from django.db import models
 
 
 class Tags(models.Model):
-    BLUE = '#0000FF'
-    ORANGE = '#FFA500'
-    GREEN = '#008000'
-    PURPLE = '#800080'
-    YELLOW = '#FFFF00'
-
-    COLOR_CHOICES = [
-        (BLUE, 'Синий'),
-        (ORANGE, 'Оранжевый'),
-        (GREEN, 'Зеленый'),
-        (PURPLE, 'Фиолетовый'),
-        (YELLOW, 'Желтый'),
-    ]
     name = models.CharField(
-        max_length=200, unique=True, null=False,
-        blank=False, verbose_name='название'
-        )
-    colour = models.CharField(
-        max_length=7, unique=True, null=False,
-        choices=COLOR_CHOICES,
-        blank=False, verbose_name='цвет'
-        )
+        max_length=200,
+        verbose_name='Название тега',
+        help_text='Название тега',
+    )
+    color = models.CharField(
+        max_length=7,
+        verbose_name='Цвет для тега',
+        help_text='Цвет для тега',
+    )
     slug = models.SlugField(
-        max_length=200, unique=True, null=False,
-        blank=False, verbose_name='слаг'
-        )
+        max_length=50,
+        unique=True,
+        verbose_name='Идентификатор тега',
+        help_text='Идентификатор тега',
+    )
 
     class Meta:
         ordering = ('name',)
-        verbose_name = 'Тег'
+        verbose_name = 'тег'
         verbose_name_plural = 'Теги'
 
     def __str__(self):

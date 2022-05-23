@@ -37,13 +37,13 @@ class FullRecipesSerializer(serializers.ModelSerializer):
     author = CustomUserSerializer(read_only=True)
     ingredients = serializers.SerializerMethodField()
     favorite = serializers.SerializerMethodField()
-    in_shoping_list = serializers.SerializerMethodField()
+    is_in_shopping_cart = serializers.SerializerMethodField()
 
     class Meta:
         model = Recipes
         fields = ('id', 'tags', 'author', 'ingredients', 'name',
                   'image', 'text', 'cooking_time',
-                  'favorite', 'in_shoping_list')
+                  'favorite', 'is_in_shopping_cart')
 
     def get_ingredients(self, obj):
         ingredients = Ringredients.objects.filter(recipe=obj)
@@ -55,7 +55,7 @@ class FullRecipesSerializer(serializers.ModelSerializer):
             return False
         return Favorite.objects.filter(recipe=obj, user=request.user).exists()
 
-    def get_in_shoping_list(self, obj):
+    def get_is_in_shopping_cart(self, obj):
         request = self.context.get('request')
         if not request or request.user.is_anonymous:
             return False
@@ -71,6 +71,11 @@ class AddRecipeIngredientsSerializer(serializers.ModelSerializer):
         model = Ringredients
         fields = ('id', 'amount')
 
+    def validate_amount(self, data):
+        if data <= 0:
+            raise ValidationError('Хоть чуток насыпь XD')
+        return data    
+
 
 class AddRecipeSerializer(serializers.ModelSerializer):
     image = Base64ImageField()
@@ -85,19 +90,10 @@ class AddRecipeSerializer(serializers.ModelSerializer):
         fields = ('id', 'tags', 'author', 'ingredients', 'name',
                   'image', 'text', 'cooking_time')
 
-    def validate_ingredients(self, data):
-        ingredients = self.initial_data.get('ingredients')
-        if ingredients == []:
-            raise ValidationError('Нужно выбрать минимум 1 ингридиент!')
-        for ingredient in ingredients:
-            if int(ingredient['amount']) <= 0:
-                raise ValidationError('Количество должно быть положительным!')
-        return data
-
     def validate_cooking_time(self, data):
         if data <= 0:
             raise ValidationError('Время готовки не может быть'
-                                  ' отрицательным числом или нулем!')
+                                  ' отрицательным числом или нулем!!!!')
         return data
 
     def add_recipe_ingredients(self, ingredients, recipe):

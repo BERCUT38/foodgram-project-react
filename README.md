@@ -41,9 +41,23 @@ DB_PORT
 
  
 
-### Как запустить проект: 
+### Как запустить проект локально(ubuntu):
+1 - Из папки infra/ запускаем команду:
+	sudo docker-compose up -d --build
 
-настроен workflow, 
+2 - выполняем команды:
+	 docker-compose exec web python manage.py makemigrations
+    	 docker-compose exec web python manage.py migrate
+    	 # заполним базу ингредиентами
+	 docker-compose exec web python manage.py add_base --path data/
+ 
+3 - из папки infra/server/colors.txt внести тэги через админ зону
+
+4 - Проект доступен локально по адресу:
+			http://localhost/
+
+### Запуск на сервере
+из папки "infra/server/" скопировать на вирт. машину сборку docker-compose.yml, .env, default.conf
 
 При выполнении команды "Push" проект выполняет загрузку на сервер и развертку. 
 

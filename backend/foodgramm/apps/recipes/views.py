@@ -123,9 +123,3 @@ def get_ingredients_list(recipes_list, user):
             'attachment; filename=' + filename
         )
     return response
-
-
-def download_file_response(list_to_download, filename):
-    response = HttpResponse(list_to_download, 'Content-Type: text/plain')
-    response['Content-Disposition'] = f'attachment; filename="{filename}"'
-    return response
