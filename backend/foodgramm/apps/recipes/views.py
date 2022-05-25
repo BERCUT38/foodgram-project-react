@@ -118,7 +118,7 @@ def get_ingredients_list(recipes_list, user):
                 f'{ingredient.measurement_unit}\n'
             )
     with open(f'recipes_data/ingredients_list/{filename}', 'r') as textfile:
-        response = HttpResponse(textfile.read(), content_type="text/txt")
+        response = HttpResponse(textfile.read(), content_type="text/plain")
         response['Content-Disposition'] = (
             'attachment; filename=' + filename
         )
