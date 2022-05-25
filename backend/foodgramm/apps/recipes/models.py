@@ -22,8 +22,7 @@ class Recipes(models.Model):
                     verbose_name='Время готовки')
     image = models.ImageField(upload_to='recipes/',
                               blank=False, null=False,
-                              verbose_name='Фото рецепта',
-                              validators=[size_picture])
+                              verbose_name='Фото рецепта',)
 
     class Meta:
         ordering = ('-id',)
