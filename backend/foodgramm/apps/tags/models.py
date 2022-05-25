@@ -11,6 +11,7 @@ class Tags(models.Model):
         max_length=7,
         verbose_name='Цвет для тега',
         help_text='Цвет для тега',
+        default='0'
     )
     slug = models.SlugField(
         max_length=50,
