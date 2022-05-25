@@ -3,6 +3,7 @@ from apps.tags.models import Tags
 from apps.user.models import User
 from django.core.validators import MinValueValidator
 from django.db import models
+
 from.validator import size_picture
 
 
@@ -19,8 +20,10 @@ class Recipes(models.Model):
     cooking_time = models.PositiveIntegerField(
                     validators=[MinValueValidator(1)],
                     verbose_name='Время готовки')
-    image = models.ImageField(upload_to='recipes/', blank=False, null=False,
-                              verbose_name='Фото рецепта', validators=[size_picture])
+    image = models.ImageField(upload_to='recipes/',
+                              blank=False, null=False,
+                              verbose_name='Фото рецепта',
+                              validators=[size_picture])
 
     class Meta:
         ordering = ('-id',)
