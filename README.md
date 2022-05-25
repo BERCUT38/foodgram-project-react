@@ -46,10 +46,14 @@ DB_PORT
 	sudo docker-compose up -d --build
 
 2 - выполняем команды:
-	 docker-compose exec web python manage.py makemigrations
-    	 docker-compose exec web python manage.py migrate
-    	 # заполним базу ингредиентами
-	 docker-compose exec web python manage.py add_base --path data/
+		# миграции
+   	docker-compose exec web python manage.py migrate
+    	# заполним базу ингредиентами
+	docker-compose exec web python manage.py add_base --path data/
+        # создадим пользователя
+	sudo docker-compose exec web python manage.py createsuperuser
+		# статика
+    sudo docker-compose exec web python manage.py collectstatic --no-input
  
 3 - из папки infra/server/colors.txt внести тэги через админ зону
 
@@ -57,15 +61,22 @@ DB_PORT
 			http://localhost/
 
 ### Запуск на сервере
-из папки "infra/server/" скопировать на вирт. машину сборку docker-compose.yml, .env, default.conf
+1 - из папки "infra/server/" скопировать на вирт. машину сборку docker-compose.yml, .env, default.conf
 
-При выполнении команды "Push" проект выполняет загрузку на сервер и развертку. 
+2 - При выполнении команды "Push" проект выполняет загрузку на сервер и развертку. 
 
-При первой разверте выполнить:
-	docker-compose exec web python manage.py migrate
+3 - При первой разверте выполнить:
+		# миграции
+   	docker-compose exec web python manage.py migrate
+    	# заполним базу ингредиентами
 	docker-compose exec web python manage.py add_base --path data/
-	docker-compose exec web python manage.py createsuperuser
+        # создадим пользователя
+	sudo docker-compose exec web python manage.py createsuperuser
+		# статика
+    sudo docker-compose exec web python manage.py collectstatic --no-input
 
- 
+	из папки infra/server/colors.txt внести тэги через админ зону
+
+4 - Проект доступен по внешнему ip сервера	
 
 Автор: Будник Сергей 
