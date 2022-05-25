@@ -1,5 +1,6 @@
 from django import forms
 
+
 def size_picture(value):
     if value == '':
         raise forms.ValidationError(
