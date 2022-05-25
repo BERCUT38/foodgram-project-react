@@ -62,7 +62,6 @@ DB_PORT
 При выполнении команды "Push" проект выполняет загрузку на сервер и развертку. 
 
 При первой разверте выполнить:
-	docker-compose exec web python manage.py makemigrations
 	docker-compose exec web python manage.py migrate
 	docker-compose exec web python manage.py add_base --path data/
 	docker-compose exec web python manage.py createsuperuser
