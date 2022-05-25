@@ -4,8 +4,6 @@ from apps.user.models import User
 from django.core.validators import MinValueValidator
 from django.db import models
 
-from.validator import size_picture
-
 
 class Recipes(models.Model):
     name = models.CharField(max_length=200, blank=False, null=False,
